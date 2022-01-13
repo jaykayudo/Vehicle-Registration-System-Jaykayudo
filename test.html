@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Testing Shit</title>
+</head>
+<body>
+    <form action="" method="post">
+        <input type="text" id="chasis" onchange="validate()">
+        <span id="chasis-error"></span>
+    </form>
+    <script>
+        var chasis = document.getElementById("chasis");
+        var chasisError = document.getElementById("chasis-error");
+        function validate(){
+        const xmlhttp = new XMLHttpRequest();
+        var chasischeck = true;
+        xmlhttp.onload = async function() {
+          if(this.responseText == 'Chasis Already Exists'){
+              chasisError.innerHTML = "Chasis Already Exists";
+              chasischeck = false;
+          }
+        }
+        xmlhttp.open("GET", "chasis.php?chasis=" + chasis.value);
+        xmlhttp.send();
+        if(!chasischeck){
+            return false;
+        }
+        else{
+            chasisError.innerHTML = "";
+        }
+    }
+    </script>
+</body>
+</html>

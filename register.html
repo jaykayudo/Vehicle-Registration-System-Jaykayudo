@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register Vehicle</title>
+    <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="scripts/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+                <nav class="style-navbar">
+                                <div class="style-left-nav"> <a href="index.html">VRS</a> </div>
+                                <div class="style-right-nav">
+                                    <ul class="unstyle list-flex">
+                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="#">About</a></li>
+                                        <li><a href="register.html">Register</a></li>
+                                        <li><a href="plate_no.php">Get Plate No</a></li>
+                                        <li><a href="Vehicle_inspection.html">Vehicle Inspection</a></li>
+                                    </ul>
+                                </div> 
+                             </nav>
+    <h2 class="text-center color-main register-header"> Vehicle Registration </h2>
+    <div class="form-box">
+        <p class="form-header"> Fill the Form </p>
+        <form action="register.php" method="POST" enctype="multipart/form-data" onsubmit="return validate()" >
+        <div class="row">
+                <div class="col-md-6">
+        
+            <div class="form-section">
+                <h3>Personal Information</h3>
+                <div class="form-group">
+                    <input type="text" name="fullname" id="fullname" class="style-form-control" placeholder=" " required>
+                    <label> Fullname*</label>
+                    <span class="help-text">*surname first</span>
+                    <span id="fullname-error"></span>
+                </div>
+                <div class="form-group">
+
+                        <input type="text" name="dob" id="dob" class="style-form-control" placeholder= " "  required>
+                        <label>Date of Birth*</label>
+                        <span class="help-text">*dd/mm/yy</span>
+                        <span id="dob-error"></span>
+                </div>
+                <div class="form-group">
+                    <select name="sex" id="sex" class="style-select-control" required>
+                        <option value=""></option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                    <label>Sex*</label>
+                 </div>
+                <div class="form-group">
+                    <select  name="address" id="address" class="style-select-control" placeholder=" " required>
+                        <option value="" ></option>
+                        <option value="Abia">Abia</option>
+                        <option value="Adamawa">Adamawa</option>
+                        <option value="AkwaIbom">AkwaIbom</option>
+                        <option value="Anambra">Anambra</option>
+                        <option value="Bauchi">Bauchi</option>
+                        <option value="Bayelsa">Bayelsa</option>
+                        <option value="Benue">Benue</option>
+                        <option value="Borno">Borno</option>
+                        <option value="Cross River">Cross River</option>
+                        <option value="Delta">Delta</option>
+                        <option value="Ebonyi">Ebonyi</option>
+                        <option value="Edo">Edo</option>
+                        <option value="Ekiti">Ekiti</option>
+                        <option value="Enugu">Enugu</option>
+                        <option value="FCT">FCT</option>
+                        <option value="Gombe">Gombe</option>
+                        <option value="Imo">Imo</option>
+                        <option value="Jigawa">Jigawa</option>
+                        <option value="Kaduna">Kaduna</option>
+                        <option value="Kano">Kano</option>
+                        <option value="Katsina">Katsina</option>
+                        <option value="Kebbi">Kebbi</option>
+                        <option value="Kogi">Kogi</option>
+                        <option value="Kwara">Kwara</option>
+                        <option value="Lagos">Lagos</option>
+                        <option value="Nasarawa">Nasarawa</option>
+                        <option value="Niger">Niger</option>
+                        <option value="Ogun">Ogun</option>
+                        <option value="Ondo">Ondo</option>
+                        <option value="Osun">Osun</option>
+                        <option value="Oyo">Oyo</option>
+                        <option value="Plateau">Plateau</option>
+                        <option value="Rivers">Rivers</option>
+                        <option value="Sokoto">Sokoto</option>
+                        <option value="Taraba">Taraba</option>
+                        <option value="Yobe">Yobe</option>
+                        <option value="Zamfara">Zamfara</option>
+                    </select>
+                        <label> Resident Address*</label>
+                        <span id="address-error"></span>
+                </div>
+                <div class="form-group">
+						
+						<select onchange="toggleLGA(this);" name="state" id="state" class="style-select-control" placeholder=" " required>
+							<option value="" ></option>
+							<option value="Abia">Abia</option>
+							<option value="Adamawa">Adamawa</option>
+							<option value="AkwaIbom">AkwaIbom</option>
+							<option value="Anambra">Anambra</option>
+							<option value="Bauchi">Bauchi</option>
+							<option value="Bayelsa">Bayelsa</option>
+							<option value="Benue">Benue</option>
+							<option value="Borno">Borno</option>
+							<option value="Cross River">Cross River</option>
+							<option value="Delta">Delta</option>
+							<option value="Ebonyi">Ebonyi</option>
+							<option value="Edo">Edo</option>
+							<option value="Ekiti">Ekiti</option>
+							<option value="Enugu">Enugu</option>
+							<option value="FCT">FCT</option>
+							<option value="Gombe">Gombe</option>
+							<option value="Imo">Imo</option>
+							<option value="Jigawa">Jigawa</option>
+							<option value="Kaduna">Kaduna</option>
+							<option value="Kano">Kano</option>
+							<option value="Katsina">Katsina</option>
+							<option value="Kebbi">Kebbi</option>
+							<option value="Kogi">Kogi</option>
+							<option value="Kwara">Kwara</option>
+							<option value="Lagos">Lagos</option>
+							<option value="Nasarawa">Nasarawa</option>
+							<option value="Niger">Niger</option>
+							<option value="Ogun">Ogun</option>
+							<option value="Ondo">Ondo</option>
+							<option value="Osun">Osun</option>
+							<option value="Oyo">Oyo</option>
+							<option value="Plateau">Plateau</option>
+							<option value="Rivers">Rivers</option>
+							<option value="Sokoto">Sokoto</option>
+							<option value="Taraba">Taraba</option>
+							<option value="Yobe">Yobe</option>
+							<option value="Zamfara">Zamfara</option>
+                        </select>
+                        <label class="control-label">State of Origin</label>
+					</div>
+
+					<div class="form-group">
+						
+						<select name="lga" id="lga" class="select-lga style-select-control" placeholder=" " required>
+                       
+                        </select>
+                        <label class="control-label">LGA of Origin</label>
+					</div>
+                <div class="form-group">
+                        <input type="text" id="hometown" name="hometown" class="style-form-control" placeholder=" " maxlength="100" required>
+                        <label> Home Town*</label>
+                        <span id="hometown-error"></span>
+                </div>
+                <div class="form-group">
+                        <input type="tel" name="phonenumber" id="phonenumber" class="style-form-control" placeholder=" " maxlength="100" required>
+                        <label> Phone Number*</label>
+                        <span id="phonenumber-error"></span>
+                </div>
+            </div>
+                </div>
+                <div class="col-md-6">
+            <div class="form-section">
+                <h3>Vehicle Information</h3>
+                <div class="form-group">
+                                
+                    <input type="text" name="vehiclename" id="vehiclename" class="style-form-control" placeholder=" " required>
+                    <label> Vehicle Name/Model *</label>
+                    <span id="vehicle-error"></span>
+                </div>
+                <div class="form-group">
+                        <input type="text" name="enginenumber" id="enginenumber" class="style-form-control" placeholder=" " required>
+                        <label> Engine Number*</label>
+                        <span id="enginenumber-error"></span>
+                </div>
+                <div class="form-group">
+                        <input type="text" name="chasis" id="chasis" class="style-form-control" placeholder=" " required>
+                        <label> Chasis*</label>
+                        <span id="chasis-error"></span>
+                </div>
+            </div>
+            <div class="form-section" >
+                    <h3>Documents Uploads</h3>
+                    <div class="form-group">
+                        <label class="file-label"> Passport</label>
+                        <input type="file" name="passport" class="file" accept="image/*" id="passport" onchange="fileupdate()" > <span class="file-indicator" id="passport-text">No Image Chosen</span>
+                        <span id="passport-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="file-label"> Vehicle Documents</label>
+                            <input type="file" name="vehicledoc" id="vehicledoc" class="file" accept="image/*" onchange="fileupdate()" > <span class="file-indicator" id="vehicledoc-text">No Image Chosen</span>
+                            <span id="vehicledoc-error"></span>
+                    </div>
+                </div>
+            <div class="form-section p-3">
+                <h3>Image Preview</h3>
+                <div class="row">
+                    <div class="col-6">
+                        <img src="" id="passport-preview" alt="Passport Preview" class="img-thumbnail">
+                    </div>
+                    <div class="col-6">
+                        <img src=""  id="vehicledoc-preview" alt="Vehicle Docs Preview" class="img-thumbnail">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="btn-box">
+            <input type="submit" value="Submit Details" name="register" class="register-btn">
+        </div>
+        </form>
+       
+    </div>
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/lga.min.js"></script>
+    <script src="scripts/jquery-ui/jquery-ui.min.js"></script>
+    <script src="scripts/register.js"></script>
+    <script>
+            $( function() {
+            $( "#dob" ).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            minDate: new Date(1945,0,1),
+            maxDate: "-18Y",
+            dateFormat:"dd/mm/yy"
+            });
+        } );
+ 
+    </script>
+</body>
+</html>
